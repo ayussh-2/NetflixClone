@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-link {
+    @apply hover:cursor-pointer hover:opacity-65  duration-500;
+}

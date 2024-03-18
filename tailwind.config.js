@@ -4,8 +4,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                netLight: ["nlight"],
-                netMedium: ["nMedium"],
+                poppins: ["Poppins", "sans-serif"],
             },
         },
     },
