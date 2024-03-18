@@ -2,7 +2,7 @@ import logo from "../assets/logo.svg";
 import { Search, Bell, User, ChevronDown } from "lucide-react";
 function Navbar() {
     return (
-        <div className="flex items-center justify-between text-white font-poppins px-10 py-5">
+        <div className="flex items-center justify-between text-white font-poppins px-10 py-5 absolute w-full z-10">
             <div className="flex items-center gap-8 text-sm  font-light ">
                 <div>
                     <div>
@@ -17,7 +17,7 @@ function Navbar() {
                     <p className="nav-link opacity-85">Browse by languages</p>
                 </div>
             </div>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 *:hover:cursor-pointer">
                 <Search />
                 <p className="text-sm">Children</p>
                 <Bell />
