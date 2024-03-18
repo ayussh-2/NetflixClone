@@ -2,7 +2,7 @@ import movieLogo from "../assets/movieLogo.png";
 import { Play, Info, RotateCw, VolumeX } from "lucide-react";
 function Subdetails({ title, label, labelType, subdetails, type }) {
     return (
-        <div className="text-white z-10 top-64 absolute px-10 flex flex-col gap-5">
+        <div className="text-white z-10 top-52 absolute px-10 flex flex-col gap-5">
             <div>
                 <img src={movieLogo} alt="movieLogo" className="h-20" />
             </div>
@@ -42,7 +42,7 @@ function Subdetails({ title, label, labelType, subdetails, type }) {
                         </div>
                         <div className="flex items-center">
                             <div className="bg-white w-[2px] h-10"></div>
-                            <p className="uppercase bg-gray-400 bg-opacity-50 px-10 py-2 rounded-sm">
+                            <p className="uppercase bg-gray-800 bg-opacity-50 px-10 py-2 rounded-sm">
                                 {type}
                             </p>
                         </div>

@@ -1,28 +1,33 @@
-/* .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.8),
-        rgba(0, 0, 0, 0)
-    );
-    z-index: -5; 
+/* Hide scrollbar for webkit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    display: none;
 }
 
-.overlay:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;/
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.8),
-        rgba(0, 0, 0, 0)
-    );
-    z-index: -4; 
+/* Hide scrollbar for Firefox and other browsers */
+body {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE/Edge */
+}
+
+@keyframes fadeLeftToRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadeLeftToRight {
+    animation: fadeLeftToRight 0.5s ease-in-out;
+}
+
+.childTitle {
+    display: none;
+}
+/* .stripTitle:hover .childTitle {
+    display: block;
+    animation: fadeLeftToRight 0.5s ease-in-out;
 } */

@@ -3,5 +3,11 @@
 @tailwind utilities;
 
 .nav-link {
-    @apply hover:cursor-pointer hover:opacity-65  duration-500;
+    @apply hover:cursor-pointer hover:opacity-65  duration-500 font-medium;
+}
+.movie-card-btn {
+    @apply bg-[#303030] bg-opacity-75 rounded-full p-2 border-[2px] border-[#9f9f9f] hover:border-white;
+}
+.movie-card-btn-2 {
+    @apply bg-opacity-75 rounded-full p-2;
 }
