@@ -36,10 +36,10 @@ function Subdetails({ title, label, labelType, subdetails, type }) {
                         </button>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="h-30 w-30 rounded-full border-[2px] p-2 border-opacity-0 cursor-pointer hover:bg-white hover:bg-opacity-15">
+                        <button className="h-30 w-30 rounded-full border-[2px] p-2 border-opacity-0 cursor-pointer hover:bg-white hover:bg-opacity-40">
                             {/* <RotateCw size={20} className="text-white" /> */}
                             <VolumeX size={20} className="text-white" />
-                        </div>
+                        </button>
                         <div className="flex items-center">
                             <div className="bg-white w-[2px] h-10"></div>
                             <p className="uppercase bg-gray-800 bg-opacity-50 px-10 py-2 rounded-sm">

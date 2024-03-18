@@ -1,10 +1,12 @@
 import { Play, Plus, ThumbsUp, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import MovieModal from "./MovieModal";
 function Movie({ movie }) {
     const [view, setView] = useState(false);
     return (
         <div className="">
+            {/* <MovieModal /> */}
             <AnimatePresence>
                 {view && (
                     <motion.div
@@ -65,6 +67,7 @@ function Movie({ movie }) {
                 className={`w-52 h-28 overflow-hidden rounded-sm cursor-pointer `}
                 onMouseEnter={() => setView(true)}
                 onMouseLeave={() => setView(false)}
+                onMouseMove={() => setView(true)}
             >
                 <img
                     src="https://images-cdn.ubuy.co.in/63ef0a397f1d781bea0a2464-star-wars-rogue-one-movie-poster.jpg"
