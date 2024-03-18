@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import bg from "./assets/bg.mp4";
 import Subdetails from "./components/Subdetails";
 import Movies from "./components/Movies";
+import Footer from "./components/Footer";
 function App() {
     const movie = {
         title: "title",
@@ -125,8 +126,8 @@ function App() {
     console.log(movies);
 
     return (
-        <div className="font-poppins">
-            <section id="home" className="relative">
+        <div className="font-poppins bg-[#141414] ">
+            <section id="home" className="relative ">
                 <Navbar />
                 <Subdetails
                     title={movie.title}
@@ -135,7 +136,9 @@ function App() {
                     subdetails={movie.subdetails}
                     type={movie.type}
                 />
-                <Movies movies={movies} stripTitle={"your best bets"} />
+                <div className="absolute w-full z-20 bottom-0">
+                    <Movies movies={movies} stripTitle={"your best bets"} />
+                </div>
 
                 <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-[rgba(0,0,0,0.9)] via-transparent to-transparent z-1"></div>
                 <div className="absolute bottom-0 left-0 w-full h-[600px] bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.7)] z-1"></div>
@@ -146,6 +149,27 @@ function App() {
                     muted
                     className="w-full h-screen object-cover -z-10 top0 left-0"
                 ></video>
+            </section>
+            <section>
+                <div className=" flex flex-col gap-5">
+                    <Movies movies={movies} stripTitle={"Continue Watching"} />
+                    <Movies
+                        movies={movies}
+                        stripTitle={"Tv Shows based on books"}
+                    />
+                    <Movies
+                        movies={movies}
+                        stripTitle={"Critically acclaimed tv shows"}
+                    />
+                    <Movies
+                        movies={movies}
+                        stripTitle={"Hindi language tv shows"}
+                    />
+                    <Movies movies={movies} stripTitle={"New on Netflix"} />
+                </div>
+            </section>
+            <section>
+                <Footer />
             </section>
         </div>
     );

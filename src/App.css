@@ -7,6 +7,8 @@
 body {
     scrollbar-width: none; /* For Firefox */
     -ms-overflow-style: none; /* For IE/Edge */
+    background-color: black;
+    overflow: hidden;
 }
 
 @keyframes fadeLeftToRight {
@@ -23,11 +25,17 @@ body {
 .fadeLeftToRight {
     animation: fadeLeftToRight 0.5s ease-in-out;
 }
-
-.childTitle {
-    display: none;
+@keyframes scaleFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-/* .stripTitle:hover .childTitle {
-    display: block;
-    animation: fadeLeftToRight 0.5s ease-in-out;
-} */
+
+.scaleFade {
+    animation: scaleFade 0.3s ease-in-out;
+}

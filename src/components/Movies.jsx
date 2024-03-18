@@ -22,7 +22,7 @@ function Movies({ movies, stripTitle }) {
         }
     };
     return (
-        <div className="text-white absolute bottom-0  z-10 my-2">
+        <div className="text-white  z-10 my-5">
             <p className="capitalize font-medium text-2xl mb-4 px-10 ">
                 <p className="flex items-center">
                     {stripTitle}
@@ -34,6 +34,17 @@ function Movies({ movies, stripTitle }) {
                     </div>
                 </p>
             </p>
+
+            {/* <div
+                className="overflow-hidden w-screen rounded-md flex justify-between "
+                ref={containerRef}
+            >
+                <div className="flex items-center justify-evenly gap-2">
+                    {movies.map((movie, index) => {
+                        return <Movie key={index} movie={movie} />;
+                    })}
+                </div>
+            </div> */}
             <div className="relative">
                 <button
                     className="absolute left-0 text-white top-0 bottom-0 bg-gradient-to-r from-black to-transparent *:hover:scale-125 px-5 *:duration-200"
@@ -42,7 +53,7 @@ function Movies({ movies, stripTitle }) {
                     <ChevronLeft size={30} />
                 </button>
                 <div
-                    className="overflow-hidden w-screen rounded-md flex gap-2"
+                    className="overflow-hidden scrollbar-hide rounded-md flex gap-2"
                     ref={containerRef}
                 >
                     {movies.map((movie, index) => {
