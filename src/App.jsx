@@ -4,7 +4,16 @@ import Subdetails from "./components/Subdetails";
 import Movies from "./components/Movies";
 import Footer from "./components/Footer";
 import MovieModal from "./components/MovieModal";
+
+import { useEffect, useState } from "react";
 function App() {
+    const [isOpen, setIsOpen] = useState(false);
+    function handleClose() {
+        setIsOpen(false);
+    }
+    function handleOpen() {
+        setIsOpen(true);
+    }
     const movie = {
         title: "title",
         label: "#1 in Movies Today",
@@ -127,6 +136,17 @@ function App() {
         },
     ];
 
+    useEffect(() => {
+        fetch("http://www.omdbapi.com/?i=tt3896198&apikey=43a26222").then(
+            (res) =>
+                res
+                    .json()
+                    .then((data) => console.log(data))
+                    .catch((err) => {
+                        console.log(err);
+                    })
+        );
+    });
     return (
         <div className="font-poppins bg-[#141414] ">
             <section id="home" className="relative ">
@@ -141,17 +161,20 @@ function App() {
                 <div className="absolute w-full z-20 bottom-0">
                     <Movies movies={movies} stripTitle={"your best bets"} />
                 </div>
-                <MovieModal
-                    title={movies[0].title}
-                    director={movies[0].director}
-                    year={movies[0].year}
-                    genre={movies[0].genre}
-                    rating={movies[0].rating}
-                    synopsis={movies[0].synopsis}
-                    duration={movies[0].duration}
-                    cast={movies[0].cast}
-                    movies={movies}
-                />
+                {isOpen && (
+                    <MovieModal
+                        title={movies[0].title}
+                        director={movies[0].director}
+                        year={movies[0].year}
+                        genre={movies[0].genre}
+                        rating={movies[0].rating}
+                        synopsis={movies[0].synopsis}
+                        duration={movies[0].duration}
+                        cast={movies[0].cast}
+                        movies={movies}
+                        handleClose={handleClose}
+                    />
+                )}
 
                 <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-[rgba(0,0,0,0.9)] via-transparent to-transparent z-1"></div>
                 <div className="absolute bottom-0 left-0 w-full h-[600px] bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.7)] z-1"></div>

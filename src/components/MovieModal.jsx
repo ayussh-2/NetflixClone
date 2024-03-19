@@ -1,6 +1,6 @@
 import { Play, Plus, ThumbsUp, VolumeX, X } from "lucide-react";
 import MovieCard from "./MovieCard";
-
+import { useState } from "react";
 function MovieModal({
     title,
     director,
@@ -11,6 +11,7 @@ function MovieModal({
     duration,
     cast,
     movies,
+    handleClose,
 }) {
     return (
         <div className="absolute z-20  flex items-center overflow-hidden justify-center bg-[#181818] bg-opacity-60 h-screen text-white w-full">
@@ -23,7 +24,10 @@ function MovieModal({
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute top-0 right-0 p-5 z-10">
-                            <button className="bg-[#181818] rounded-full p-2">
+                            <button
+                                className="bg-[#181818] rounded-full p-2"
+                                onClick={() => handleClose()}
+                            >
                                 <X />
                             </button>
                         </div>
