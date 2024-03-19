@@ -1,12 +1,11 @@
 import { Play, Plus, ThumbsUp, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import MovieModal from "./MovieModal";
+
 function Movie({ movie }) {
     const [view, setView] = useState(false);
     return (
         <div className="">
-            {/* <MovieModal /> */}
             <AnimatePresence>
                 {view && (
                     <motion.div

@@ -8,6 +8,7 @@ import MovieModal from "./components/MovieModal";
 import { useEffect, useState } from "react";
 function App() {
     const [isOpen, setIsOpen] = useState(false);
+    const [movieList, setMovieList] = useState("");
     function handleClose() {
         setIsOpen(false);
     }
@@ -136,17 +137,35 @@ function App() {
         },
     ];
 
-    useEffect(() => {
-        fetch("http://www.omdbapi.com/?i=tt3896198&apikey=43a26222").then(
-            (res) =>
-                res
-                    .json()
-                    .then((data) => console.log(data))
-                    .catch((err) => {
-                        console.log(err);
-                    })
-        );
+    const apiKey = "166f5207509e932ec03973d7747da952";
+
+    const apiUrl = "https://api.themoviedb.org/3";
+    const imgPath = "https://image.tmdb.org/t/p/w500/";
+    async function fetchRandomMovies(numberOfMovies = 5) {
+        try {
+            const response = await fetch(
+                `${apiUrl}/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`
+            );
+            const data = await response.json();
+            const randomMovies = [];
+            for (let i = 0; i < numberOfMovies; i++) {
+                const randomIndex = Math.floor(
+                    Math.random() * data.results.length
+                );
+                randomMovies.push(data.results[randomIndex]);
+            }
+
+            return randomMovies;
+        } catch (error) {
+            console.error("Error fetching random movies:", error);
+            return [];
+        }
+    }
+
+    fetchRandomMovies(5).then((movies) => {
+        console.log("Random Movies:", movies);
     });
+
     return (
         <div className="font-poppins bg-[#141414] ">
             <section id="home" className="relative ">
