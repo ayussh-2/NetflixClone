@@ -13,6 +13,7 @@ function App() {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium laudantium cum enim vitae sequi aut ex et aliquid, asperiores dolorum.",
         type: "u/a 16+",
     };
+
     const movies = [
         {
             title: "Inception",
@@ -23,46 +24,7 @@ function App() {
             duration: "2h 28min",
             synopsis:
                 "A thief who enters the dreams of others to steal their secrets from their subconscious.",
-        },
-        {
-            title: "Inception",
-            director: "Christopher Nolan",
-            year: 2010,
-            genre: ["Action", "Adventure", "Sci-Fi"],
-            rating: 8.8,
-            duration: "2h 28min",
-            synopsis:
-                "A thief who enters the dreams of others to steal their secrets from their subconscious.",
-        },
-        {
-            title: "Inception",
-            director: "Christopher Nolan",
-            year: 2010,
-            genre: ["Action", "Adventure", "Sci-Fi"],
-            rating: 8.8,
-            duration: "2h 28min",
-            synopsis:
-                "A thief who enters the dreams of others to steal their secrets from their subconscious.",
-        },
-        {
-            title: "Inception",
-            director: "Christopher Nolan",
-            year: 2010,
-            genre: ["Action", "Adventure", "Sci-Fi"],
-            rating: 8.8,
-            duration: "2h 28min",
-            synopsis:
-                "A thief who enters the dreams of others to steal their secrets from their subconscious.",
-        },
-        {
-            title: "Inception",
-            director: "Christopher Nolan",
-            year: 2010,
-            genre: ["Action", "Adventure", "Sci-Fi"],
-            rating: 8.8,
-            duration: "2h 28min",
-            synopsis:
-                "A thief who enters the dreams of others to steal their secrets from their subconscious.",
+            cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
         },
         {
             title: "The Shawshank Redemption",
@@ -73,6 +35,7 @@ function App() {
             duration: "2h 22min",
             synopsis:
                 "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+            cast: ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
         },
         {
             title: "Pulp Fiction",
@@ -83,6 +46,7 @@ function App() {
             duration: "2h 34min",
             synopsis:
                 "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+            cast: ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
         },
         {
             title: "The Godfather",
@@ -93,6 +57,7 @@ function App() {
             duration: "2h 55min",
             synopsis:
                 "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+            cast: ["Marlon Brando", "Al Pacino", "James Caan"],
         },
         {
             title: "The Dark Knight",
@@ -103,6 +68,7 @@ function App() {
             duration: "2h 32min",
             synopsis:
                 "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+            cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
         },
         {
             title: "Forrest Gump",
@@ -113,6 +79,7 @@ function App() {
             duration: "2h 22min",
             synopsis:
                 "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+            cast: ["Tom Hanks", "Robin Wright", "Gary Sinise"],
         },
         {
             title: "The Matrix",
@@ -123,6 +90,7 @@ function App() {
             duration: "2h 16min",
             synopsis:
                 "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+            cast: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
         },
         {
             title: "Fight Club",
@@ -133,6 +101,29 @@ function App() {
             duration: "2h 19min",
             synopsis:
                 "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+            cast: ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
+        },
+        {
+            title: "Goodfellas",
+            director: "Martin Scorsese",
+            year: 1990,
+            genre: ["Biography", "Crime", "Drama"],
+            rating: 8.7,
+            duration: "2h 26min",
+            synopsis:
+                "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+            cast: ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
+        },
+        {
+            title: "Schindler's List",
+            director: "Steven Spielberg",
+            year: 1993,
+            genre: ["Biography", "Drama", "History"],
+            rating: 8.9,
+            duration: "3h 15min",
+            synopsis:
+                "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+            cast: ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes"],
         },
     ];
 
@@ -158,6 +149,8 @@ function App() {
                     rating={movies[0].rating}
                     synopsis={movies[0].synopsis}
                     duration={movies[0].duration}
+                    cast={movies[0].cast}
+                    movies={movies}
                 />
 
                 <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-[rgba(0,0,0,0.9)] via-transparent to-transparent z-1"></div>
