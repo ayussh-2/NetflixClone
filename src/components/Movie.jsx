@@ -2,7 +2,7 @@ import { Play, Plus, ThumbsUp, ChevronDown, Dot } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-function Movie({ movie, imgPath, genre, handleOpen, currentPos }) {
+function Movie({ movie, imgPath, genre, handleOpen }) {
     const [view, setView] = useState(false);
 
     return (
@@ -17,10 +17,12 @@ function Movie({ movie, imgPath, genre, handleOpen, currentPos }) {
                         className={`bg-[#181818] cursor-pointer z-50 absolute  drop-shadow-2xl shadow-2xl rounded-md`}
                         onMouseLeave={() => setView(false)}
                         onClick={() => handleOpen(movie.id)}
-                        style={{
-                            // left: `${currentPos}px`,
-                            transform: `translateX(${currentPos}px)`,
-                        }}
+                        style={
+                            {
+                                // left: `${currentPos}px`,
+                                // transform: `translateX(${currentPos}px)`,
+                            }
+                        }
                     >
                         <div className="w-80 h-40 overflow-hidden rounded-md">
                             <img
