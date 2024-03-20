@@ -81,7 +81,7 @@ function App() {
     const imgPath = "https://image.tmdb.org/t/p/w500/";
 
     const omdbApiKey = "43a26222";
-    const omdbUrl = `http://www.omdbapi.com/?apikey=${omdbApiKey}`;
+    const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}`;
 
     async function fetchRandomMovies(numberOfMovies) {
         try {
