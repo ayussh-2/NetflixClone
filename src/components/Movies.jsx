@@ -1,5 +1,5 @@
 import Movie from "./Movie";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 function Movies({ movies, stripTitle, imgPath, genre, handleOpen }) {
     const containerRef = useRef(null);
@@ -43,7 +43,7 @@ function Movies({ movies, stripTitle, imgPath, genre, handleOpen }) {
                     <ChevronLeft size={30} />
                 </button>
                 <div
-                    className="overflow-hidden scrollbar-hide rounded-md flex gap-2"
+                    className="overflow-hidden rounded-md flex gap-2"
                     ref={containerRef}
                 >
                     {movies.map((movie, index) => {

@@ -1,6 +1,6 @@
 import { Play, Plus, ThumbsUp, VolumeX, X } from "lucide-react";
 import MovieCard from "./MovieCard";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 function MovieModal({
     title,
     director,
@@ -19,7 +19,13 @@ function MovieModal({
         return Math.floor(Math.random() * upperLimit) + lowerLimit;
     }
     return (
-        <div className="absolute z-20  flex items-center overflow-hidden justify-center bg-[#181818] bg-opacity-60 h-screen text-white w-full">
+        <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 0.5 }}
+            className="absolute z-20  flex items-center overflow-hidden justify-center bg-[#181818] bg-opacity-80 h-screen text-white w-full"
+        >
             <div className=" w-[65%]  overflow-y-scroll h-screen py-10 rounded-lg flex flex-col">
                 <div className=" rounded-md relative">
                     <div className="relative overflow-hidden h-[400px]  rounded-md">
@@ -68,7 +74,7 @@ function MovieModal({
                 </div>
                 <div className="bg-[#181818] pb-20">
                     <div className="px-10 flex">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-3/4">
                             <div className="flex items-center gap-2">
                                 <p className="text-green-500 text-[15px] font-semibold">
                                     {Math.floor(Math.random() * 50) + 50}% Match
@@ -148,7 +154,7 @@ function MovieModal({
                             <div>
                                 <div className="w-60 h-32  overflow-hidden rounded-md relative">
                                     <img
-                                        src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180"
+                                        src={backdrop}
                                         alt=""
                                         className="w-full h-full object-cover"
                                     />
@@ -167,7 +173,7 @@ function MovieModal({
                             <div>
                                 <div className="w-60 h-32 overflow-hidden rounded-md relative">
                                     <img
-                                        src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180"
+                                        src={backdrop}
                                         alt=""
                                         className="w-full h-full object-cover"
                                     />
@@ -186,7 +192,7 @@ function MovieModal({
                             <div>
                                 <div className="w-60 h-32 overflow-hidden rounded-md relative">
                                     <img
-                                        src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180"
+                                        src={backdrop}
                                         alt=""
                                         className="w-full h-full object-cover"
                                     />
@@ -205,7 +211,7 @@ function MovieModal({
                             <div>
                                 <div className="w-60 h-32 my-5 overflow-hidden rounded-md relative">
                                     <img
-                                        src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180"
+                                        src={backdrop}
                                         alt=""
                                         className="w-full h-full object-cover"
                                     />
@@ -224,7 +230,7 @@ function MovieModal({
                             <div>
                                 <div className="w-60 h-32 my-5 overflow-hidden rounded-md relative">
                                     <img
-                                        src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1636996180"
+                                        src={backdrop}
                                         alt=""
                                         className="w-full h-full object-cover"
                                     />
@@ -280,7 +286,7 @@ function MovieModal({
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

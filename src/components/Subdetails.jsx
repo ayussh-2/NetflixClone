@@ -1,6 +1,13 @@
 import movieLogo from "../assets/movieLogo.png";
 import { Play, Info, RotateCw, VolumeX } from "lucide-react";
-function Subdetails({ title, label, labelType, subdetails, type }) {
+function Subdetails({
+    title,
+    label,
+    labelType,
+    subdetails,
+    type,
+    handleClick,
+}) {
     return (
         <div className="text-white z-10 top-52 absolute px-10 flex flex-col gap-5">
             <div>
@@ -28,7 +35,12 @@ function Subdetails({ title, label, labelType, subdetails, type }) {
                                 Play
                             </span>
                         </button>
-                        <button className="bg-white bg-opacity-35 hover:bg-opacity-20 px-10 py-2 rounded-md font-semibold">
+                        <button
+                            className="bg-white bg-opacity-35 hover:bg-opacity-20 px-10 py-2 rounded-md font-semibold"
+                            onClick={() => {
+                                handleClick();
+                            }}
+                        >
                             <span className="flex flex-row items-center text-lg">
                                 <Info size={30} className="mr-2" />
                                 More Info
