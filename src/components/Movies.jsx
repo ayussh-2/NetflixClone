@@ -1,7 +1,7 @@
 import Movie from "./Movie";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-function Movies({ movies, stripTitle }) {
+function Movies({ movies, stripTitle, imgPath, genre, handleOpen }) {
     const containerRef = useRef(null);
 
     const scrollLeft = () => {
@@ -35,16 +35,6 @@ function Movies({ movies, stripTitle }) {
                 </p>
             </p>
 
-            {/* <div
-                className="overflow-hidden w-screen rounded-md flex justify-between "
-                ref={containerRef}
-            >
-                <div className="flex items-center justify-evenly gap-2">
-                    {movies.map((movie, index) => {
-                        return <Movie key={index} movie={movie} />;
-                    })}
-                </div>
-            </div> */}
             <div className="relative">
                 <button
                     className="absolute left-0 text-white top-0 bottom-0 bg-gradient-to-r from-black to-transparent *:hover:scale-125 px-5 *:duration-200"
@@ -57,7 +47,15 @@ function Movies({ movies, stripTitle }) {
                     ref={containerRef}
                 >
                     {movies.map((movie, index) => {
-                        return <Movie key={index} movie={movie} />;
+                        return (
+                            <Movie
+                                key={index}
+                                movie={movie}
+                                imgPath={imgPath}
+                                genre={genre}
+                                handleOpen={handleOpen}
+                            />
+                        );
                     })}
                 </div>
                 <button

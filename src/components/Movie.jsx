@@ -1,9 +1,10 @@
-import { Play, Plus, ThumbsUp, ChevronDown } from "lucide-react";
+import { Play, Plus, ThumbsUp, ChevronDown, Dot } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-function Movie({ movie }) {
+function Movie({ movie, imgPath, genre, handleOpen }) {
     const [view, setView] = useState(false);
+
     return (
         <div className="">
             <AnimatePresence>
@@ -13,11 +14,13 @@ function Movie({ movie }) {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{ duration: 0.3 }}
-                        className={`bg-[#181818] z-50 absolute  drop-shadow-2xl shadow-2xl rounded-md`}
+                        className={`bg-[#181818] cursor-pointer z-50 absolute  drop-shadow-2xl shadow-2xl rounded-md`}
+                        onMouseLeave={() => setView(false)}
+                        onClick={() => handleOpen(movie.id)}
                     >
                         <div className="w-80 h-40 overflow-hidden rounded-md">
                             <img
-                                src="https://images-cdn.ubuy.co.in/63ef0a397f1d781bea0a2464-star-wars-rogue-one-movie-poster.jpg"
+                                src={imgPath + `${movie.backdrop_path}`}
                                 alt=""
                             />
                         </div>
@@ -54,9 +57,33 @@ function Movie({ movie }) {
                                 </p>
                             </div>
                             <div className="flex items-center gap-2 text-sm text-gray-400">
-                                <p>Suspence</p>
+                                {/* <p>Suspence</p>
                                 <p>Dark</p>
-                                <p>Thriller</p>
+                                <p>Thriller</p> */}
+                                <p className="flex items-center">
+                                    {movie.genre_ids.map((id, index) => {
+                                        const currentGenre = genre.find(
+                                            (g) => g.id === id
+                                        );
+
+                                        return (
+                                            <span
+                                                key={index}
+                                                className="flex items-center"
+                                            >
+                                                {currentGenre.name}
+                                                {index !==
+                                                    movie.genre_ids.length -
+                                                        1 && (
+                                                    <Dot
+                                                        size={17}
+                                                        fill="#fff"
+                                                    />
+                                                )}
+                                            </span>
+                                        );
+                                    })}
+                                </p>
                             </div>
                         </div>
                     </motion.div>
@@ -65,13 +92,9 @@ function Movie({ movie }) {
             <div
                 className={`w-52 h-28 overflow-hidden rounded-sm cursor-pointer `}
                 onMouseEnter={() => setView(true)}
-                onMouseLeave={() => setView(false)}
                 onMouseMove={() => setView(true)}
             >
-                <img
-                    src="https://images-cdn.ubuy.co.in/63ef0a397f1d781bea0a2464-star-wars-rogue-one-movie-poster.jpg"
-                    alt=""
-                />
+                <img src={imgPath + `${movie.backdrop_path}`} alt="" />
             </div>
         </div>
     );

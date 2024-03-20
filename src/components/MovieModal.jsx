@@ -4,6 +4,7 @@ import { useState } from "react";
 function MovieModal({
     title,
     director,
+    writer,
     year,
     genre,
     rating,
@@ -12,14 +13,18 @@ function MovieModal({
     cast,
     movies,
     handleClose,
+    backdrop,
 }) {
+    function genRandomNumber(upperLimit, lowerLimit) {
+        return Math.floor(Math.random() * upperLimit) + lowerLimit;
+    }
     return (
         <div className="absolute z-20  flex items-center overflow-hidden justify-center bg-[#181818] bg-opacity-60 h-screen text-white w-full">
             <div className=" w-[65%]  overflow-y-scroll h-screen py-10 rounded-lg flex flex-col">
                 <div className=" rounded-md relative">
                     <div className="relative overflow-hidden h-[400px]  rounded-md">
                         <img
-                            src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/adventure-movie-poster-template-design-7b13ea2ab6f64c1ec9e1bb473f345547_screen.jpg?ts=1636999411"
+                            src={backdrop}
                             alt=""
                             className="w-full h-full object-cover"
                         />
@@ -66,7 +71,7 @@ function MovieModal({
                         <div className="flex flex-col">
                             <div className="flex items-center gap-2">
                                 <p className="text-green-500 text-[15px] font-semibold">
-                                    62% Match
+                                    {Math.floor(Math.random() * 50) + 50}% Match
                                 </p>
                                 <p className="text-gray-400 text-[15px]">
                                     {year}
@@ -80,9 +85,9 @@ function MovieModal({
                             </div>
                             <div className="flex gap-2 items-center my-2">
                                 <p className="text-gray-400 text-xs border-[1px] px-1 border-gray-400 font-medium">
-                                    U/A 16+
+                                    {rating}
                                 </p>
-                                <p className="text-sm">gore,threat,violence</p>
+                                <p className="text-sm">{genre}</p>
                             </div>
                             <div className="flex gap-2 items-center">
                                 <div className="bg-red-600 text-white font-bold rounded-lg p-1 h-14 w-14 scale-[0.6]">
@@ -91,7 +96,8 @@ function MovieModal({
                                     </p>
                                 </div>
                                 <p className="font-semibold text-xl">
-                                    #2 in Movies Today
+                                    #{Math.floor(Math.random() * 10)} in Movies
+                                    Today
                                 </p>
                             </div>
                             <div className="text-[16px] mt-5">{synopsis}</div>
@@ -99,15 +105,11 @@ function MovieModal({
                         <div className="flex flex-col">
                             <div className="flex  text-[14px] gap-2">
                                 <span className="text-[#777777]">Cast:</span>
-                                <span className="capitalize">
-                                    {cast.map((actor) => actor + ", ")}
-                                </span>
+                                <span className="capitalize">{cast}</span>
                             </div>
                             <div className="flex my-5 text-[14px] gap-2">
                                 <span className="text-[#777777]">Genres:</span>
-                                <span className="capitalize">
-                                    {genre.map((actor) => actor + ", ")}
-                                </span>
+                                <span className="capitalize">{genre}</span>
                             </div>
                             <div className="flex  text-[14px] gap-2">
                                 <span className="text-[#777777]">
@@ -126,9 +128,13 @@ function MovieModal({
                                 return (
                                     <MovieCard
                                         key={index}
-                                        duration={movie.duration}
+                                        duration={
+                                            movie.runtime ||
+                                            genRandomNumber(120, 60)
+                                        }
                                         year={movie.year}
-                                        synopsis={movie.synopsis}
+                                        synopsis={movie.overview}
+                                        backdrop={movie.backdrop_path}
                                     />
                                 );
                             })}
@@ -250,17 +256,15 @@ function MovieModal({
                             </p>
                             <p className="flex items-center text-[14px] gap-1">
                                 <span className="text-[#777777]">Writer:</span>
-                                <span>Writer</span>
+                                <span>{writer}</span>
                             </p>
                             <p className="flex items-center text-[14px] gap-1">
                                 <span className="text-[#777777]">Cast:</span>
-                                <span>{cast.map((actor) => actor + ", ")}</span>
+                                <span>{cast}</span>
                             </p>
                             <p className="flex items-center text-[14px] gap-1">
                                 <span className="text-[#777777]">Genres:</span>
-                                <span>
-                                    {genre.map((actor) => actor + ", ")}
-                                </span>
+                                <span>{genre}</span>
                             </p>
                             <p className="flex items-center text-[14px] gap-1">
                                 <span className="text-[#777777]">Rating:</span>

@@ -1,7 +1,12 @@
 import { Plus, Play } from "lucide-react";
-function MovieCard({ duration, year, synopsis }) {
-    const src =
-        "https://www.tallengestore.com/cdn/shop/products/Oppenheimer-CillianMurphy-ChristopherNolan-HollywoodMoviePoster_1_grande.jpg?v=1647416509";
+function MovieCard({ duration, year, synopsis, backdrop }) {
+    const src = "https://image.tmdb.org/t/p/w500" + backdrop;
+    // console.log(movie);
+    function convertMinToHrsAndMin(duration) {
+        let hrs = Math.floor(duration / 60);
+        let min = duration % 60;
+        return `${hrs}h ${min}min`;
+    }
     return (
         <div className="bg-[#2f2f2fd2] flex flex-col w-60 rounded-md text-[#bcbcbc]">
             <div className="w-60 h-32 overflow-hidden relative rounded-md">
@@ -14,7 +19,7 @@ function MovieCard({ duration, year, synopsis }) {
                 <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[rgba(0,0,0,0.4)] via-transparent to-transparent z-1"></div>
                 <div className="absolute top-2 right-0">
                     <span className="text-white text-sm px-3 tracking-wider">
-                        {duration}
+                        {convertMinToHrsAndMin(duration)}
                     </span>
                 </div>
             </div>
