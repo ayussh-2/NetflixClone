@@ -137,15 +137,7 @@ function Search() {
             console.log(err);
         }
     }
-    useEffect(() => {
-        const queryParameters = new URLSearchParams(window.location.search);
-        const query = queryParameters.get("query");
 
-        if (query) {
-            setSearchQuery(query);
-            searchMovie();
-        }
-    }, []);
     useEffect(() => {
         searchMovie();
     }, [searchQuery]);
@@ -165,9 +157,9 @@ function Search() {
                             />
                         ))}
                     </div>
-                ) : (
+                ) : searchQuery !== "" ? (
                     <MovieNotFound searchTitle={searchQuery} />
-                )}
+                ) : null}
 
                 <AnimatePresence>
                     {isOpen && (
