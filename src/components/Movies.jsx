@@ -29,7 +29,7 @@ function Movies({
         }
     };
     return (
-        <div className="text-[#999999] md:text-white z-10 my-5">
+        <div className="text-[#999999] md:text-white my-5">
             <p className="capitalize font-medium text-2xl mb-4 px-5 sm:px-10">
                 <span className="flex items-center">
                     {stripTitle}

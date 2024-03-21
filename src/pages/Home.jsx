@@ -267,8 +267,8 @@ function Home() {
                     className="w-full h-screen object-cover -z-10 top-0 left-0"
                 ></video>
             </section>
-            <section className="pt-20">
-                <div className="flex  flex-col md:gap-5">
+            <section className="pt-20 ">
+                <div className="flex absolute z-10 flex-col md:gap-5 bg-[#141414]">
                     <Movies
                         movies={movieList.continueWatching}
                         imgPath={imgPath}
@@ -309,10 +309,8 @@ function Home() {
                         handleOpen={handleOpen}
                         redirectToMobleMovie={redirectToMobleMovie}
                     />
+                    <Footer />
                 </div>
-            </section>
-            <section>
-                <Footer />
             </section>
         </div>
     ) : (

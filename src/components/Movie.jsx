@@ -22,7 +22,7 @@ function Movie({ movie, imgPath, genre, handleOpen, redirectToMobleMovie }) {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0 }}
                         transition={{ duration: 0.3 }}
-                        className={`bg-[#181818] hidden md:flex flex-col cursor-pointer z-50 absolute  drop-shadow-2xl shadow-2xl rounded-md`}
+                        className={`bg-[#181818] hidden md:flex flex-col cursor-pointer z-50 absolute drop-shadow-2xl shadow-2xl rounded-md`}
                         onMouseLeave={() => setView(false)}
                         onClick={() => handleClick()}
                         style={
@@ -104,7 +104,7 @@ function Movie({ movie, imgPath, genre, handleOpen, redirectToMobleMovie }) {
                 )}
             </AnimatePresence>
             <div
-                className={`md:w-52 w-40 md:h-28 h-36 overflow-hidden rounded-sm cursor-pointer `}
+                className={`md:w-52 w-40 md:h-28 h-36 overflow-hidden rounded-sm cursor-pointer z-40`}
                 onMouseEnter={() => setView(true)}
                 onMouseMove={() => setView(true)}
             >
