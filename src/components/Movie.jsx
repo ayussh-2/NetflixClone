@@ -6,6 +6,7 @@ function Movie({ movie, imgPath, genre, handleOpen, redirectToMobleMovie }) {
     const [view, setView] = useState(false);
     function handleClick() {
         isMobile() ? redirectToMobleMovie(movie.id) : handleOpen(movie.id);
+        console.log("clicked");
         setView(false);
     }
     function isMobile() {
@@ -107,6 +108,7 @@ function Movie({ movie, imgPath, genre, handleOpen, redirectToMobleMovie }) {
                 className={`md:w-52 w-40 md:h-28 h-36 overflow-hidden rounded-sm cursor-pointer z-40`}
                 onMouseEnter={() => setView(true)}
                 onMouseMove={() => setView(true)}
+                onClick={() => handleClick()}
             >
                 <img src={imgPath + `${movie.backdrop_path}`} alt="" />
             </div>

@@ -101,7 +101,6 @@ function Search() {
     async function redirectToMobleMovie(id) {
         const tmdbData = await fetchTmdbData(id);
         const imdbId = tmdbData.imdb_id;
-
         navigate(`/mobile?id=${imdbId}`);
     }
     function handleOpen(id) {

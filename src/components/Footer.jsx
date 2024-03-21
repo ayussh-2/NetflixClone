@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { Facebook, Instagram, Twitter, Youtube, Heart } from "lucide-react";
 function Footer() {
     return (
         <>
@@ -56,6 +56,20 @@ function Footer() {
                     <p className="hover:underline">Cookie Prefrences</p>
                     <p className="hover:underline">Help Center</p>
                 </div>
+            </div>
+            <div>
+                <a
+                    href="https://github.com/ayussh-2"
+                    className="flex items-center text-xs justify-center py-5 cursor-pointer text-[#808080] papa"
+                    target="_blank"
+                >
+                    Crafted with&nbsp;
+                    <div className="bacha">
+                        <Heart color="#d81f26" size={15} />
+                    </div>
+                    &nbsp;by&nbsp;
+                    <span className="text-[#d81f26]">Ayush</span>{" "}
+                </a>
             </div>
         </>
     );

@@ -268,7 +268,7 @@ function Home() {
                 ></video>
             </section>
             <section className="pt-20 ">
-                <div className="flex absolute z-10 w-full flex-col md:gap-5 bg-[#141414]">
+                <div className="flex absolute z-30 w-full flex-col md:gap-5 bg-[#141414]">
                     <Movies
                         movies={movieList.continueWatching}
                         imgPath={imgPath}
