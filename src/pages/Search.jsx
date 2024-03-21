@@ -4,11 +4,13 @@ import Movie from "../components/Movie";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import MovieModal from "../components/MovieModal";
+import { useNavigate } from "react-router-dom";
 function Search() {
     const [searchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [found, setFound] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
     const [movie, setMovie] = useState({
         title: "",
         director: "",
@@ -96,33 +98,34 @@ function Search() {
     function handleQuery(query) {
         setSearchQuery(query);
     }
-    function isMObile() {
-        return window.innerWidth < 768;
+    async function redirectToMobleMovie(id) {
+        const tmdbData = await fetchTmdbData(id);
+        const imdbId = tmdbData.imdb_id;
+
+        navigate(`/mobile?id=${imdbId}`);
     }
     function handleOpen(id) {
         async function fetchMovie() {
             const tmdbData = await fetchTmdbData(id);
             const imdbId = tmdbData.imdb_id;
-            if (!isMObile) {
-                const backdrop = imgPath + tmdbData.backdrop_path;
-                const movie = await fetchMovieByOmdb(imdbId);
+            const backdrop = imgPath + tmdbData.backdrop_path;
+            const movie = await fetchMovieByOmdb(imdbId);
 
-                setMovie({
-                    title: movie.Title || defaultMovie.title,
-                    director: movie.Director || defaultMovie.director,
-                    writer: movie.Writer || defaultMovie.writer,
-                    year: movie.Year || defaultMovie.year,
-                    genre: movie.Genre || defaultMovie.genre,
-                    rating: movie.Rated || defaultMovie.rating,
-                    synopsis: movie.Plot || defaultMovie.synopsis,
-                    duration: movie.Runtime || defaultMovie.duration,
-                    cast: movie.Actors || defaultMovie.cast,
-                    backdrop,
-                });
+            setMovie({
+                title: movie.Title || defaultMovie.title,
+                director: movie.Director || defaultMovie.director,
+                writer: movie.Writer || defaultMovie.writer,
+                year: movie.Year || defaultMovie.year,
+                genre: movie.Genre || defaultMovie.genre,
+                rating: movie.Rated || defaultMovie.rating,
+                synopsis: movie.Plot || defaultMovie.synopsis,
+                duration: movie.Runtime || defaultMovie.duration,
+                cast: movie.Actors || defaultMovie.cast,
+                backdrop,
+            });
 
-                setIsOpen(true);
-                moveToTop();
-            }
+            setIsOpen(true);
+            moveToTop();
         }
         fetchMovie();
     }
@@ -173,6 +176,9 @@ function Search() {
                                             genre={genres}
                                             handleOpen={handleOpen}
                                             key={movie.id}
+                                            redirectToMobleMovie={
+                                                redirectToMobleMovie
+                                            }
                                         />
                                     )
                             )}

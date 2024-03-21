@@ -2,13 +2,17 @@ import { Play, Plus, ThumbsUp, ChevronDown, Dot } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-function Movie({ movie, imgPath, genre, handleOpen }) {
+function Movie({ movie, imgPath, genre, handleOpen, redirectToMobleMovie }) {
     const [view, setView] = useState(false);
-    async function handleClick() {
-        await handleOpen(movie.id);
+    function handleClick() {
+        isMobile() ? redirectToMobleMovie(movie.id) : handleOpen(movie.id);
         setView(false);
     }
-    console.log(movie);
+    function isMobile() {
+        return window.innerWidth < 768;
+    }
+
+    // console.log(movie);
     return (
         <div className="">
             <AnimatePresence>

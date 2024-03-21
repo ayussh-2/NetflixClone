@@ -81,23 +81,23 @@ function Navbar({ handleQuery, query }) {
                         <Menu color="#ffffff" size={25} />
                     </div>
                     <div>
-                        <div>
+                        <Link to={"/"}>
                             <img
                                 src={logo}
                                 alt=""
                                 className="w-auto h-16 scale-125"
                             />
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 <div className="flex items-center justify-end">
                     <input
                         type="text"
                         className="bg-[#1b1b1b] font-sans pl-2 outline-none w-32 border-gray-300 py-1 text-white border-[1px]"
-                        onChange={(e) => handleQuery(e.target.value)}
-                        value={query}
-                        placeholder="Seach"
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        value={searchQuery}
                         onKeyPress={(e) => handleEnter(e)}
+                        placeholder="Search"
                     />
                 </div>
             </div>
