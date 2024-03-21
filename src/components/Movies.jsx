@@ -55,14 +55,19 @@ function Movies({
                 </span>
             </p>
 
-            <div className="hidden  relative">
+            <div className="relative flex items-center z-30">
                 <button
-                    className="absolute left-0 text-white top-0 bottom-0 bg-gradient-to-r from-black to-transparent hover:scale-125 duration-200 px-3 sm:px-5"
+                    className="absolute left-0 text-white top-0 bottom-0 bg-gradient-to-r from-black to-transparent px-3 sm:px-5"
                     onClick={scrollLeft}
                 >
-                    <ChevronLeft size={30} />
+                    <span className="hover:scale-125 duration-200">
+                        <ChevronLeft size={30} />
+                    </span>
                 </button>
-                <div className="overflow-x-auto overflow-y-hidden rounded-md flex gap-2 px-3 sm:px-0">
+                <div
+                    className="flex gap-2 overflow-x-hidden"
+                    ref={containerRef}
+                >
                     {movies.map((movie, index) => (
                         <Movie
                             key={index}
@@ -75,14 +80,16 @@ function Movies({
                     ))}
                 </div>
                 <button
-                    className="absolute right-0 top-0 bottom-0 px-3 bg-gradient-to-r from-transparent to-black hover:scale-125 duration-200"
+                    className="absolute right-0 top-0 bottom-0 px-3 bg-gradient-to-r from-transparent to-black"
                     onClick={scrollRight}
                 >
-                    <ChevronRight size={30} />
+                    <span className="hover:scale-125 duration-200">
+                        <ChevronRight size={30} />
+                    </span>
                 </button>
             </div>
-            <div
-                className="flex gap-2 overflow-x-auto"
+            {/* <div
+                className=" hidden gap-2 overflow-x-auto"
                 style={{
                     maxWidth: "calc(100vw)",
                 }}
@@ -96,7 +103,7 @@ function Movies({
                         redirectToMobleMovie={redirectToMobleMovie}
                     />
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 }
