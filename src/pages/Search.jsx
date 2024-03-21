@@ -96,28 +96,33 @@ function Search() {
     function handleQuery(query) {
         setSearchQuery(query);
     }
+    function isMObile() {
+        return window.innerWidth < 768;
+    }
     function handleOpen(id) {
         async function fetchMovie() {
             const tmdbData = await fetchTmdbData(id);
             const imdbId = tmdbData.imdb_id;
-            const backdrop = imgPath + tmdbData.backdrop_path;
-            const movie = await fetchMovieByOmdb(imdbId);
+            if (!isMObile) {
+                const backdrop = imgPath + tmdbData.backdrop_path;
+                const movie = await fetchMovieByOmdb(imdbId);
 
-            setMovie({
-                title: movie.Title || defaultMovie.title,
-                director: movie.Director || defaultMovie.director,
-                writer: movie.Writer || defaultMovie.writer,
-                year: movie.Year || defaultMovie.year,
-                genre: movie.Genre || defaultMovie.genre,
-                rating: movie.Rated || defaultMovie.rating,
-                synopsis: movie.Plot || defaultMovie.synopsis,
-                duration: movie.Runtime || defaultMovie.duration,
-                cast: movie.Actors || defaultMovie.cast,
-                backdrop,
-            });
+                setMovie({
+                    title: movie.Title || defaultMovie.title,
+                    director: movie.Director || defaultMovie.director,
+                    writer: movie.Writer || defaultMovie.writer,
+                    year: movie.Year || defaultMovie.year,
+                    genre: movie.Genre || defaultMovie.genre,
+                    rating: movie.Rated || defaultMovie.rating,
+                    synopsis: movie.Plot || defaultMovie.synopsis,
+                    duration: movie.Runtime || defaultMovie.duration,
+                    cast: movie.Actors || defaultMovie.cast,
+                    backdrop,
+                });
 
-            setIsOpen(true);
-            moveToTop();
+                setIsOpen(true);
+                moveToTop();
+            }
         }
         fetchMovie();
     }
@@ -126,7 +131,7 @@ function Search() {
         try {
             const res = await fetch(tmdbSearchUrl);
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             setMovies(data.results);
             if (data.results.length > 0) {
                 setFound(true);
@@ -141,21 +146,37 @@ function Search() {
     useEffect(() => {
         searchMovie();
     }, [searchQuery]);
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get("q");
+        setSearchQuery(query);
+        console.log(query);
+    }, []);
     return (
         <>
             <Navbar query={searchQuery} handleQuery={handleQuery} />
-            <div className="bg-[#141414] h-screen text-white flex items-center justify-center">
+
+            <div className="bg-[#141414] md:screen min-h-lvh text-white flex items-center justify-center">
                 {found ? (
-                    <div className="grid grid-cols-6 gap-2 gap-y-16 mt-24">
-                        {movies.map((movie) => (
-                            <Movie
-                                movie={movie}
-                                imgPath={imgPath}
-                                genre={genres}
-                                handleOpen={handleOpen}
-                                key={movie.id}
-                            />
-                        ))}
+                    <div className="px-2">
+                        <p className="md:hidden text-[#999999] text-xl mt-10 font-bold">
+                            {" "}
+                            Results for: {searchQuery}
+                        </p>
+                        <div className="grid grid-cols-2 md:grid-cols-6 gap-2 gap-y-2 md:gap-y-16 md:mt-24 mt-5">
+                            {movies.map(
+                                (movie) =>
+                                    movie.backdrop_path !== null && (
+                                        <Movie
+                                            movie={movie}
+                                            imgPath={imgPath}
+                                            genre={genres}
+                                            handleOpen={handleOpen}
+                                            key={movie.id}
+                                        />
+                                    )
+                            )}
+                        </div>
                     </div>
                 ) : searchQuery !== "" ? (
                     <MovieNotFound searchTitle={searchQuery} />

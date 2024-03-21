@@ -131,18 +131,20 @@ function MovieModal({
                         </p>
                         <div className="grid grid-cols-3 gap-16">
                             {movies.map((movie, index) => {
-                                return (
-                                    <MovieCard
-                                        key={index}
-                                        duration={
-                                            movie.runtime ||
-                                            genRandomNumber(120, 60)
-                                        }
-                                        year={movie.year}
-                                        synopsis={movie.overview}
-                                        backdrop={movie.backdrop_path}
-                                    />
-                                );
+                                if (movie.backdrop_path !== null) {
+                                    return (
+                                        <MovieCard
+                                            key={index}
+                                            duration={
+                                                movie.runtime ||
+                                                genRandomNumber(120, 60)
+                                            }
+                                            year={movie.year}
+                                            synopsis={movie.overview}
+                                            backdrop={movie.backdrop_path}
+                                        />
+                                    );
+                                }
                             })}
                         </div>
                     </div>

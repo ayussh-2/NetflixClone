@@ -4,7 +4,11 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function Movie({ movie, imgPath, genre, handleOpen }) {
     const [view, setView] = useState(false);
-
+    async function handleClick() {
+        await handleOpen(movie.id);
+        setView(false);
+    }
+    console.log(movie);
     return (
         <div className="">
             <AnimatePresence>
@@ -16,7 +20,7 @@ function Movie({ movie, imgPath, genre, handleOpen }) {
                         transition={{ duration: 0.3 }}
                         className={`bg-[#181818] cursor-pointer z-50 absolute  drop-shadow-2xl shadow-2xl rounded-md`}
                         onMouseLeave={() => setView(false)}
-                        onClick={() => handleOpen(movie.id)}
+                        onClick={() => handleClick()}
                         style={
                             {
                                 // left: `${currentPos}px`,
@@ -96,7 +100,7 @@ function Movie({ movie, imgPath, genre, handleOpen }) {
                 )}
             </AnimatePresence>
             <div
-                className={`w-52 h-28 overflow-hidden rounded-sm cursor-pointer `}
+                className={`md:w-52 w-42 md:h-28 h-36 overflow-hidden rounded-sm cursor-pointer `}
                 onMouseEnter={() => setView(true)}
                 onMouseMove={() => setView(true)}
             >
