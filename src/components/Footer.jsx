@@ -2,7 +2,7 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 function Footer() {
     return (
         <>
-            <div className="text-white px-80 pt-32 pb-10 hidden">
+            <div className="text-white px-80 pt-32 pb-10 hidden md:block">
                 <div className="flex gap-10 *:hover:cursor-pointer">
                     <Facebook fill="#fff" size={28} />
                     <Instagram size={28} />

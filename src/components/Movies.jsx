@@ -1,6 +1,7 @@
 import Movie from "./Movie";
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 function Movies({
     movies,
     stripTitle,
@@ -10,7 +11,7 @@ function Movies({
     redirectToMobleMovie,
 }) {
     const containerRef = useRef(null);
-
+    const [showExplore, setShowExplore] = useState(false);
     const scrollLeft = () => {
         if (containerRef.current) {
             containerRef.current.scrollBy({
@@ -30,13 +31,27 @@ function Movies({
     };
     return (
         <div className="text-[#999999] md:text-white my-5">
-            <p className="capitalize font-medium text-2xl mb-4 px-5 sm:px-10">
-                <span className="flex items-center">
+            <p className="capitalize font-medium text-2xl mb-4 px-5 cursor-pointer sm:px-10">
+                <span
+                    className="flex items-center"
+                    onMouseEnter={() => setShowExplore(true)}
+                    onMouseLeave={() => setShowExplore(false)}
+                >
                     {stripTitle}
-                    <span className="hidden sm:flex text-sm text-blue-300 ml-2">
-                        Explore More
-                        <ChevronRight size={20} />
-                    </span>
+                    <AnimatePresence>
+                        {showExplore && (
+                            <motion.span
+                                initial={{ opacity: 0, x: -100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -100 }}
+                                transition={{ duration: 0.2 }}
+                                className="hidden sm:flex text-sm text-blue-300 ml-2"
+                            >
+                                Explore More
+                                <ChevronRight size={20} />
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
                 </span>
             </p>
 
@@ -68,7 +83,9 @@ function Movies({
             </div>
             <div
                 className="flex gap-2 overflow-x-auto"
-                style={{ maxWidth: "calc(100vw)" }}
+                style={{
+                    maxWidth: "calc(100vw)",
+                }}
             >
                 {movies.map((movie, index) => (
                     <Movie
