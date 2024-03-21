@@ -6,8 +6,11 @@ import Footer from "../components/Footer";
 import MovieModal from "../components/MovieModal";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Home() {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
     const [movieList, setMovieList] = useState({
         bestBets: [],
         continueWatching: [],
@@ -208,11 +211,16 @@ function Home() {
     function moveToTop() {
         window.scrollTo(0, 0);
     }
+    async function redirectToMobleMovie(id) {
+        const tmdbData = await fetchTmdbData(id);
+        const imdbId = tmdbData.imdb_id;
 
+        navigate(`/mobile?id=${imdbId}`);
+    }
     return !loading ? (
         <div className="font-poppins bg-[#141414]">
-            <section id="home" className="relative">
-                <Navbar />
+            <Navbar />
+            <section id="home" className="relative hidden md:block">
                 <Subdetails
                     title={homePageMovie.title}
                     label={homePageMovie.label}
@@ -259,14 +267,15 @@ function Home() {
                     className="w-full h-screen object-cover -z-10 top-0 left-0"
                 ></video>
             </section>
-            <section>
-                <div className="flex flex-col gap-5">
+            <section className="pt-20">
+                <div className="flex  flex-col md:gap-5">
                     <Movies
                         movies={movieList.continueWatching}
                         imgPath={imgPath}
                         genre={genres}
                         stripTitle={"Continue Watching"}
                         handleOpen={handleOpen}
+                        redirectToMobleMovie={redirectToMobleMovie}
                     />
                     <Movies
                         movies={movieList.tvShowsBasedOnBooks}
@@ -274,6 +283,7 @@ function Home() {
                         genre={genres}
                         stripTitle={"Tv Shows based on books"}
                         handleOpen={handleOpen}
+                        redirectToMobleMovie={redirectToMobleMovie}
                     />
                     <Movies
                         movies={movieList.criticallyAcclaimedTvShows}
@@ -281,6 +291,7 @@ function Home() {
                         genre={genres}
                         stripTitle={"Critically acclaimed tv shows"}
                         handleOpen={handleOpen}
+                        redirectToMobleMovie={redirectToMobleMovie}
                     />
                     <Movies
                         movies={movieList.hindiLanguageTvShows}
@@ -288,6 +299,7 @@ function Home() {
                         genre={genres}
                         stripTitle={"Hindi language tv shows"}
                         handleOpen={handleOpen}
+                        redirectToMobleMovie={redirectToMobleMovie}
                     />
                     <Movies
                         movies={movieList.newOnNetflix}
@@ -295,6 +307,7 @@ function Home() {
                         genre={genres}
                         stripTitle={"New on Netflix"}
                         handleOpen={handleOpen}
+                        redirectToMobleMovie={redirectToMobleMovie}
                     />
                 </div>
             </section>

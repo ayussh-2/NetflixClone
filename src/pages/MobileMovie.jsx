@@ -22,6 +22,10 @@ function MobileMovie() {
             const response = await fetch(`${omdbUrl}&i=${imdbId}`);
             const data = await response.json();
             console.log(data);
+            if (data.Response === "False") {
+                alert("Movie not found!");
+                navigate("/");
+            }
             setMovie(data);
             return data;
         } catch (error) {
@@ -33,7 +37,9 @@ function MobileMovie() {
             <div className="relative">
                 <div className="flex items-center justify-center   ">
                     <div className="absolute z-10 mt-[5rem]">
-                        <img src={logo} alt="" className="h-32 w-auto" />
+                        <Link to={"/"}>
+                            <img src={logo} alt="" className="h-32 w-auto" />
+                        </Link>
                     </div>
                 </div>
                 <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-[rgba(0,0,0,1)] via-transparent to-transparent z-1"></div>
