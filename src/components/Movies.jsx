@@ -55,7 +55,7 @@ function Movies({
                 </span>
             </p>
 
-            <div className="relative flex items-center z-30">
+            <div className="relative flex items-center">
                 <div
                     className="absolute left-0 text-white top-0 bottom-0 bg-gradient-to-r from-black to-transparent"
                     onClick={scrollLeft}
