@@ -58,9 +58,8 @@ function Search() {
         { id: 37, name: "Western" },
     ];
     const omdbApiKey = "43a26222";
-    const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}`;
+
     const tmdbKey = "166f5207509e932ec03973d7747da952";
-    const tmdbSearchUrl = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=${tmdbKey}`;
     const tmdbUrl = "https://api.themoviedb.org/3";
 
     const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -82,6 +81,7 @@ function Search() {
         }
     }
     async function fetchMovieByOmdb(imdbId) {
+        const omdbUrl = `https://www.omdbapi.com/?apikey=${omdbApiKey}`;
         try {
             const response = await fetch(`${omdbUrl}&i=${imdbId}`);
             const data = await response.json();
@@ -128,12 +128,15 @@ function Search() {
         }
         fetchMovie();
     }
-    async function searchMovie() {
+    async function searchMovie(q) {
         // console.log(searchQuery);
+        const tmdbKey = "166f5207509e932ec03973d7747da952";
+        const tmdbSearchUrl = `https://api.themoviedb.org/3/search/movie?query=${
+            q ? q : searchQuery
+        }&api_key=${tmdbKey}`;
         try {
             const res = await fetch(tmdbSearchUrl);
             const data = await res.json();
-            // console.log(data);
             setMovies(data.results);
             if (data.results.length > 0) {
                 setFound(true);
@@ -152,6 +155,7 @@ function Search() {
         const urlParams = new URLSearchParams(window.location.search);
         const query = urlParams.get("q");
         setSearchQuery(query);
+        searchMovie(query);
         console.log(query);
     }, []);
     return (
