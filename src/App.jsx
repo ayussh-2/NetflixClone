@@ -6,6 +6,7 @@ import Search from "./pages/Search";
 import MobileMovie from "./pages/MobileMovie";
 import { useState } from "react";
 function App() {
+    const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [found, setFound] = useState(false);
@@ -36,6 +37,15 @@ function App() {
         cast: "Actor 1" + "," + "Actor 2",
         backdrop:
             "https://image.tmdb.org/t/p/w500/6zbKgwgaaCyyBXE4Sun4oWQfQmi.jpg",
+    };
+    const homePageMovie = {
+        title: "title",
+        label: "#1 in Movies Today",
+        labelType: "Top 10",
+        subdetails:
+            "Thirty years of service leads Maverick to train a group of elite TOPGUN graduates to prepare for a high-profile mission while Maverick battles his past demons.",
+        type: "u/a 16+",
+        imdbId: "tt1745960",
     };
     const genres = [
         { id: 28, name: "Action" },
@@ -90,7 +100,33 @@ function App() {
             console.log(error);
         }
     }
+    async function fetchRandomMovies(numberOfMovies) {
+        try {
+            setLoading(true);
+            const response = await fetch(
+                `${tmdbUrl}/discover/movie?sort_by=popularity.desc&api_key=${tmdbKey}`
+            );
+            const data = await response.json();
+            const randomMovies = [];
+            for (let i = 0; i < numberOfMovies; i++) {
+                const randomIndex = Math.floor(
+                    Math.random() * data.results.length
+                );
+                randomMovies.push(data.results[randomIndex]);
+            }
 
+            return randomMovies;
+        } catch (error) {
+            console.error("Error fetching random movies:", error);
+            return [];
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    function justOpen() {
+        setIsOpen(true);
+    }
     function handleClose() {
         setIsOpen(false);
     }
@@ -155,7 +191,27 @@ function App() {
             <AnimatePresence>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes location={location}>
-                        <Route path="/" element={<Home />} />
+                        <Route
+                            path="/"
+                            element={
+                                <Home
+                                    fetchRandomMovies={fetchRandomMovies}
+                                    fetchMovieByOmdb={fetchMovieByOmdb}
+                                    handleOpen={handleOpen}
+                                    handleClose={handleClose}
+                                    redirectToMobleMovie={redirectToMobleMovie}
+                                    moveToTop={moveToTop}
+                                    imgPath={imgPath}
+                                    defaultMovie={defaultMovie}
+                                    genres={genres}
+                                    homePageMovie={homePageMovie}
+                                    isOpen={isOpen}
+                                    movie={movie}
+                                    loading={loading}
+                                    justOpen={justOpen}
+                                />
+                            }
+                        />
                         <Route
                             path="*"
                             element={

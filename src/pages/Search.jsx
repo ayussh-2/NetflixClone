@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import MovieNotFound from "../components/MovieNotFound";
 import Movie from "../components/Movie";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import MovieModal from "../components/MovieModal";
 

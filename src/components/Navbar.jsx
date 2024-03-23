@@ -56,18 +56,34 @@ function Navbar({ handleQuery, query, handleSearch }) {
                     </div>
                 </div>
                 <div className="flex items-center gap-5 *:hover:cursor-pointer">
-                    {showSearch ? (
-                        <input
-                            type="text"
-                            className="bg-black outline-none border-[1px] border-gray-300 px-2 py-1 text-white text-sm tracking-wide"
-                            placeholder="Titles,People,Genres"
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            value={searchQuery}
-                            onKeyPress={(e) => handleEnter(e)}
-                        />
-                    ) : (
-                        <Search onClick={() => handleSearch()} />
-                    )}
+                    <AnimatePresence>
+                        {showSearch ? (
+                            <motion.div
+                                initial={{ opacity: 0, x: 100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 100 }}
+                                transition={{ duration: 0.2 }}
+                                key={3}
+                                className="relative flex items-center"
+                            >
+                                <div className="absolute left-0 pl-2">
+                                    <Search size={20} />
+                                </div>
+                                <input
+                                    type="text"
+                                    className="bg-black outline-none border-[1px] border-gray-300 pl-8 py-2 text-white text-sm tracking-wide"
+                                    placeholder="Titles,People,Genres"
+                                    onChange={(e) =>
+                                        setSearchQuery(e.target.value)
+                                    }
+                                    value={searchQuery}
+                                    onKeyPress={(e) => handleEnter(e)}
+                                />
+                            </motion.div>
+                        ) : (
+                            <Search onClick={() => handleSearch()} />
+                        )}
+                    </AnimatePresence>
                     <p className="text-sm">Children</p>
                     <Bell />
                     <div className="flex items-center ">
