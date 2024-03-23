@@ -39,9 +39,9 @@ function Navbar({ handleQuery, query, handleSearch }) {
             <div className="md:flex hidden items-center justify-between text-white font-poppins px-10 py-5 absolute w-full z-10">
                 <div className="flex items-center gap-8 text-sm  font-light ">
                     <div>
-                        <div>
+                        <Link to={"/"}>
                             <img src={logo} alt="" className="w-auto h-20" />
-                        </div>
+                        </Link>
                     </div>
                     <div className="flex items-center gap-5">
                         <Link to={"/"}>
@@ -98,7 +98,7 @@ function Navbar({ handleQuery, query, handleSearch }) {
                     </div>
                 </div>
             </div>
-
+            <div className="bg-black text-white"></div>
             <div className="absolute md:hidden items-center justify-between text-whote font-poppins  z-40 w-full ">
                 <div className="flex px-5 bg-black items-center justify-between ">
                     <div className="flex items-center gap-3">

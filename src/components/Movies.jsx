@@ -57,7 +57,7 @@ function Movies({
 
             <div className="relative flex items-center">
                 <button
-                    className="absolute opacity-0 hover:opacity-100 duration-200 left-0 md:h-28 h-36 w-40 text-white bg-gradient-to-r from-black to-transparent"
+                    className="absolute md:opacity-0 hover:opacity-100 duration-200 left-0 md:h-28 h-[90px] md:w-40 top-0 bottom-0 text-white bg-gradient-to-r from-black to-transparent"
                     onClick={scrollLeft}
                 >
                     <span className="">
@@ -65,7 +65,7 @@ function Movies({
                     </span>
                 </button>
                 <div
-                    className="flex gap-2 overflow-x-hidden"
+                    className="flex gap-2 overflow-x-hidden items-center"
                     ref={containerRef}
                 >
                     {movies.map((movie, index) => (
@@ -81,7 +81,7 @@ function Movies({
                 </div>
 
                 <button
-                    className="absolute opacity-0 hover:opacity-100 duration-200 right-0 md:h-28 h-36 w-20 text-white bg-gradient-to-l from-black to-transparent"
+                    className="absolute md:opacity-0 hover:opacity-100 duration-200 right-0 md:h-28  md:w-20 top-0 bottom-0 h-[90px] text-white bg-gradient-to-l from-black to-transparent"
                     onClick={scrollRight}
                 >
                     <span className="">

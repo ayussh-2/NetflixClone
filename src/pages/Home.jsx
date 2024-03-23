@@ -34,27 +34,9 @@ function Home({
         forMovieModal: [],
     });
     function homeMovie() {
-        async function fetchMovie() {
-            const imdbId = homePageMovie.imdbId;
-            const movie = await fetchMovieByOmdb(imdbId);
-            setMovie({
-                title: movie.Title || defaultMovie.title,
-                director: movie.Director || defaultMovie.director,
-                writer: movie.Writer || defaultMovie.writer,
-                year: movie.Year || defaultMovie.year,
-                genre: movie.Genre || defaultMovie.genre,
-                rating: movie.Rated || defaultMovie.rating,
-                synopsis: movie.Plot || defaultMovie.synopsis,
-                duration: movie.Runtime || defaultMovie.duration,
-                cast: movie.Actors || defaultMovie.cast,
-                backdrop:
-                    "https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg",
-            });
-
-            justOpen();
-            moveToTop();
-        }
-        fetchMovie();
+        isMobile()
+            ? redirectToMobleMovie(homePageMovie.tmdbId)
+            : handleOpen(homePageMovie.tmdbId);
     }
     useEffect(() => {
         async function insertMovies() {
@@ -80,6 +62,9 @@ function Home({
         insertMovies();
     }, []);
 
+    function isMobile() {
+        return window.innerWidth < 768;
+    }
     return !loading ? (
         <div className="font-poppins  bg-[#141414]">
             <Navbar />
@@ -121,13 +106,13 @@ function Home({
                 </AnimatePresence>
 
                 <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-[rgba(0,0,0,0.9)] via-transparent to-transparent z-1"></div>
-                <div className="absolute bottom-0 left-0 w-full h-[600px] bg-gradient-to-b from-transparent via-transparent to-[rgba(0,0,0,0.7)] z-1"></div>
+                <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-t from-[#141414] via-[rgba(0,0,0,0.9)] to-[rgba(0,0,0,0)] z-1"></div>
                 <video
                     src={bg}
                     autoPlay
                     loop
                     muted
-                    className="w-full h-screen object-cover -z-10 top-0 left-0"
+                    className="w-full h-auto object-cover -z-10 top-0 left-0"
                 ></video>
             </section>
             <section className="pt-20 ">
