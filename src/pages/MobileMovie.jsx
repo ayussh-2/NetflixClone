@@ -21,7 +21,7 @@ function MobileMovie() {
         try {
             const response = await fetch(`${omdbUrl}&i=${imdbId}`);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             if (data.Response === "False") {
                 alert("Movie not found!");
                 navigate("/");
@@ -63,9 +63,13 @@ function MobileMovie() {
                         <p className="text-white text-4xl font-semibold font-poppins text-center">
                             Watch Netflix on your phone or tablet
                         </p>
-                        <button className="bg-[#d4001d] rounded-sm w-full py-5 mt-5 text-white text-2xl ">
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.netflix.mediaclient&hl=en&gl=US&pli=1"
+                            target="_blank"
+                            className="bg-[#d4001d] rounded-sm w-full py-5 mt-5 text-center text-white text-2xl "
+                        >
                             Get the free app
-                        </button>
+                        </a>
                     </div>
                     <div className="bg-[#141414] px-16 w-full py-10  text-white ">
                         <Link to={"/"}>

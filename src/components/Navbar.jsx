@@ -3,12 +3,11 @@ import { Search, Bell, Menu, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-function Navbar({ handleQuery, query }) {
+function Navbar({ handleQuery, query, handleSearch }) {
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [page, setPage] = useState("home");
     const [menuOpen, setMenuOpen] = useState(false);
-
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
@@ -34,6 +33,7 @@ function Navbar({ handleQuery, query }) {
     function handleToggleMenu() {
         setMenuOpen(!menuOpen);
     }
+
     return (
         <div className="relative">
             <div className="md:flex hidden items-center justify-between text-white font-poppins px-10 py-5 absolute w-full z-10">
@@ -59,7 +59,8 @@ function Navbar({ handleQuery, query }) {
                     {showSearch ? (
                         <input
                             type="text"
-                            className="bg-black outline-none border-2 border-gray-300 py-1 text-white"
+                            className="bg-black outline-none border-[1px] border-gray-300 px-2 py-1 text-white text-sm tracking-wide"
+                            placeholder="Titles,People,Genres"
                             onChange={(e) => setSearchQuery(e.target.value)}
                             value={searchQuery}
                             onKeyPress={(e) => handleEnter(e)}

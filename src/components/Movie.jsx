@@ -6,7 +6,7 @@ function Movie({ movie, imgPath, genre, handleOpen, redirectToMobleMovie }) {
     const [view, setView] = useState(false);
     function handleClick() {
         isMobile() ? redirectToMobleMovie(movie.id) : handleOpen(movie.id);
-        console.log("clicked");
+        // console.log("clicked", isMobile());
         setView(false);
     }
     function isMobile() {
