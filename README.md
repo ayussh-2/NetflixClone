@@ -15,6 +15,7 @@ This project is a Netflix clone built using React+Vite, React Router DOM, Lucide
 - **TMDB API:** The Movie Database API provides access to a vast collection of movie data, including details, images, and more.
 - **IMDb API:** The Internet Movie Database API allows access to IMDb's extensive database of movies, TV shows, actors, and more.
 
+## NOTE: IN SOME CASE MIGHT NEED TO USE VPN TO ACCESS TMDB
 ## Features
 
 1. **Search Functionality:** Users can search for movies using keywords or titles.
