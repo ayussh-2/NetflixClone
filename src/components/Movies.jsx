@@ -56,14 +56,14 @@ function Movies({
             </p>
 
             <div className="relative flex items-center">
-                <div
-                    className="absolute left-0 text-white top-0 bottom-0 bg-gradient-to-r from-black to-transparent"
+                <button
+                    className="absolute opacity-0 hover:opacity-100 duration-200 left-0 md:h-28 h-36 w-40 text-white bg-gradient-to-r from-black to-transparent"
                     onClick={scrollLeft}
                 >
-                    <span className="hover:scale-125 duration-200">
+                    <span className="">
                         <ChevronLeft size={30} />
                     </span>
-                </div>
+                </button>
                 <div
                     className="flex gap-2 overflow-x-hidden"
                     ref={containerRef}
@@ -79,14 +79,15 @@ function Movies({
                         />
                     ))}
                 </div>
-                <div
-                    className="absolute right-0 top-0 text-white bottom-0 px-3 bg-gradient-to-r from-transparent to-black"
+
+                <button
+                    className="absolute opacity-0 hover:opacity-100 duration-200 right-0 md:h-28 h-36 w-20 text-white bg-gradient-to-l from-black to-transparent"
                     onClick={scrollRight}
                 >
-                    <span className="hover:scale-125 duration-200">
+                    <span className="">
                         <ChevronRight size={30} />
                     </span>
-                </div>
+                </button>
             </div>
             {/* <div
                 className="flex gap-2 overflow-x-auto"

@@ -81,7 +81,7 @@ function Home({
     }, []);
 
     return !loading ? (
-        <div className="font-poppins bg-[#141414]">
+        <div className="font-poppins  bg-[#141414]">
             <Navbar />
             <section id="home" className="relative hidden md:block">
                 <Subdetails

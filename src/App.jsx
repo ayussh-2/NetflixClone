@@ -187,7 +187,7 @@ function App() {
     }, [searchQuery]);
 
     return (
-        <>
+        <div className="no-scrollbar overflow-x-hidden">
             <AnimatePresence>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes location={location}>
@@ -243,7 +243,7 @@ function App() {
                     </Routes>
                 </Suspense>
             </AnimatePresence>
-        </>
+        </div>
     );
 }
 

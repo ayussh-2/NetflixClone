@@ -1,6 +1,6 @@
 import { Play, Plus, ThumbsUp, VolumeX, X } from "lucide-react";
 import MovieCard from "./MovieCard";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 function MovieModal({
     title,
     director,
@@ -26,7 +26,7 @@ function MovieModal({
             transition={{ duration: 0.5 }}
             className="absolute z-20  flex items-center overflow-hidden justify-center bg-[#181818] bg-opacity-80 h-screen text-white w-full"
         >
-            <div className=" w-[65%]  overflow-y-scroll h-screen py-10 rounded-lg flex flex-col">
+            <div className=" w-[65%] no-scrollbar  overflow-y-scroll h-screen py-10 rounded-lg flex flex-col">
                 <div className=" rounded-md relative">
                     <div className="relative overflow-hidden h-[400px]  rounded-md">
                         <img

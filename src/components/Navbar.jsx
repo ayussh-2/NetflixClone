@@ -71,7 +71,7 @@ function Navbar({ handleQuery, query, handleSearch }) {
                                 </div>
                                 <input
                                     type="text"
-                                    className="bg-black outline-none border-[1px] border-gray-300 pl-8 py-2 text-white text-sm tracking-wide"
+                                    className="bg-black outline-none border-[1px] border-gray-300 pl-8 py-2 text-white text-sm tracking-wide font-sans"
                                     placeholder="Titles,People,Genres"
                                     onChange={(e) =>
                                         setSearchQuery(e.target.value)
