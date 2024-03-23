@@ -98,8 +98,8 @@ function Navbar({ handleQuery, query, handleSearch }) {
                     </div>
                 </div>
             </div>
-            <div className="bg-black text-white"></div>
-            <div className="absolute md:hidden items-center justify-between text-whote font-poppins  z-40 w-full ">
+
+            <div className="absolute md:hidden items-center justify-between text-white font-poppins z-40 w-full ">
                 <div className="flex px-5 bg-black items-center justify-between ">
                     <div className="flex items-center gap-3">
                         <div>
@@ -158,7 +158,7 @@ function Navbar({ handleQuery, query, handleSearch }) {
                                         </div>
                                         <div className="flex flex-col items-start">
                                             <p className="font-bold ">HOME</p>
-                                            <p className="font-light">
+                                            <p className="font-light text-white">
                                                 Switch Profiles
                                             </p>
                                         </div>

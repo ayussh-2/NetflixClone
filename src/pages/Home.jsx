@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 import MovieModal from "../components/MovieModal";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Home({
     isOpen,
@@ -15,14 +14,10 @@ function Home({
     genres,
     handleOpen,
     handleClose,
-    defaultMovie,
     homePageMovie,
     redirectToMobleMovie,
-    moveToTop,
     fetchRandomMovies,
-    fetchMovieByOmdb,
     imgPath,
-    justOpen,
 }) {
     const [movieList, setMovieList] = useState({
         bestBets: [],
@@ -67,7 +62,9 @@ function Home({
     }
     return !loading ? (
         <div className="font-poppins  bg-[#141414]">
-            <Navbar />
+            <div className="absolute z-50 w-full">
+                <Navbar />
+            </div>
             <section id="home" className="relative hidden md:block">
                 <Subdetails
                     title={homePageMovie.title}
