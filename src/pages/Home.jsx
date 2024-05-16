@@ -62,7 +62,7 @@ function Home({
     }
     return !loading ? (
         <div className="font-poppins  bg-[#141414]">
-            <div className="absolute z-50 w-full">
+            <div className="absolute z-40 md:z-20 w-full">
                 <Navbar />
             </div>
             <section id="home" className="relative hidden md:block">
